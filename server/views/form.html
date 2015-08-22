@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+  <div class="container">
+    <h1>Add a Puppy</h1>
+    <form method="submit" action="/submit">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Puppy Name</label>
+        <input type="text" class="form-control" id="name-input" placeholder="Name" name="puppyName">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Puppy ID</label>
+        <input type="text" class="form-control" id="id-input" placeholder="ID" name"id">
+      </div>
+      <button type="submit" class="btn btn-default">Add</button>
+    </form>
+  </div>
+
+{% endblock %}
