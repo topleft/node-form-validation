@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var puppies = [];
+var ute = require("../utility.js")
 
 // puppies home page with choices, see puppies, create puppies
 router.get('/', function(req, res, next) {
@@ -16,8 +17,8 @@ router.get("/new", function(req, res){
 router.post("/submit", function(req, res){
   var name = req.body.name;
   var id = req.body.id;
-  var formAlert = confirmComplete(name, id);
-  var alert = checkForDuplicate(id, name, puppies, res);
+  var formAlert = ute.confirmComplete(name, id);
+  var alert = ute.checkForDuplicate(id, name, puppies, res);
 
   if (formAlert){
     res.render("form", {alert: formAlert});
@@ -33,34 +34,34 @@ router.post("/submit", function(req, res){
   }
 });
 
-function confirmComplete(name, id){
-  if (name === "" && id === ""){
-    return "A name must be provided.\nAn id must be provided";
-  }
-  else if (name === ""){
-    return "A name must be provided.";
-  }
-  else if (id === ""){
-    return "An ID must be provided.";
-  }
-};
+// function confirmComplete(name, id){
+//   if (name === "" && id === ""){
+//     return "A name must be provided.\nAn id must be provided";
+//   }
+//   else if (name === ""){
+//     return "A name must be provided.";
+//   }
+//   else if (id === ""){
+//     return "An ID must be provided.";
+//   }
+// };
 
-function checkForDuplicate(currentId, currentName, arr, res){
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i]["id"] === currentId && arr[i]["name"] === currentName){
-      var alert = "Your pup is already in the system.";
-      // res.render("puppies", {alert: alert, puppies: puppies});
-      return alert;
-    }
-    else if (arr[i]["id"] === currentId){
-      var alert = "'"+currentId+"'"+" is taken, please choose another ID.";
-      // res.render("puppies", {alert: alert, puppies: puppies});
-      return alert;
-    }
-    else
-      return false;
-  };
-};
+// function checkForDuplicate(currentId, currentName, arr, res){
+//   for (var i = 0; i < arr.length; i++) {
+//     if (arr[i]["id"] === currentId && arr[i]["name"] === currentName){
+//       var alert = "Your pup is already in the system.";
+//       // res.render("puppies", {alert: alert, puppies: puppies});
+//       return alert;
+//     }
+//     else if (arr[i]["id"] === currentId){
+//       var alert = "'"+currentId+"'"+" is taken, please choose another ID.";
+//       // res.render("puppies", {alert: alert, puppies: puppies});
+//       return alert;
+//     }
+//     else
+//       return false;
+//   };
+// };
 
 
 
