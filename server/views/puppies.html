@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+  <div class="container">
+
+    <h1>{{ title }}</h1>
+    <table class="table table-striped">
+      <tr>
+        <th>Puppy Name</th>
+        <th>ID</th>
+      </tr>
+      <tr>
+        <td>{{name}}</td>
+        <td>{{id}}</td>
+      </tr>
+    </table>
+  </div>
+
+{% endblock %}
