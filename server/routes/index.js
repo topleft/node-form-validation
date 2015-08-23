@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var puppies = [];
 
 // puppies home page with choices, see puppies, create puppies
 router.get('/', function(req, res, next) {
@@ -16,8 +16,9 @@ router.get("/new", function(req, res){
 router.post("/submit", function(req, res){
   var name = req.body.name;
   var id = req.body.id;
-  console.log(name);
-  res.render("puppies", {name: name, id: id});
+  puppies.push({name: name, id: id})
+  console.log(puppies);
+  res.render("puppies", {puppies: puppies});
 });
 
 // get route show puppies info in a table
