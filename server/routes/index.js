@@ -16,42 +16,44 @@ router.get("/new", function(req, res){
 router.post("/submit", function(req, res){
   var name = req.body.name;
   var id = req.body.id;
-  console.log(puppies);
+  var formAlert = confirmComplete(name, id);
   var alert = checkForDuplicate(id, name, puppies, res);
-  if (alert){
-    res.render("puppies", {puppies: puppies, alert: alert, color: "red"});
+
+  if (formAlert){
+    res.render("form", {alert: formAlert});
+  }
+  else if (alert){
+    console.log("working")
+    res.render("form", {puppies: puppies, alert: alert});
   }
   else{
     puppies.push({name: name, id: id})
     console.log(puppies);
-    res.render("puppies", {puppies: puppies, success: name+" added to the system"});
+    res.render("puppies", {puppies: puppies, success: "'"+name+"'"+" successfully added to the system"});
   }
 });
 
-// function checkForDuplicate(currentId, currentName, arr){
-//   for (var i = 0; i < arr.length; i++) {
-//     if (arr[i]["id"] === currentId && arr[i]["name"] === currentName){
-//       var alert = "That pup is already in the system.";;
-//       return alert;
-//     }
-//     else if (arr[i]["id"] === currentId){
-//       var alert = currentId+" is taken, please choose another.";
-//       return alert;
-//     }
-//   };
-// };
-
-// need to figure out how to render form again.
+function confirmComplete(name, id){
+  if (name === "" && id === ""){
+    return "A name must be provided.\nAn id must be provided";
+  }
+  else if (name === ""){
+    return "A name must be provided.";
+  }
+  else if (id === ""){
+    return "An ID must be provided.";
+  }
+};
 
 function checkForDuplicate(currentId, currentName, arr, res){
   for (var i = 0; i < arr.length; i++) {
     if (arr[i]["id"] === currentId && arr[i]["name"] === currentName){
-      var alert = "That pup is already in the system.";
+      var alert = "Your pup is already in the system.";
       // res.render("puppies", {alert: alert, puppies: puppies});
       return alert;
     }
     else if (arr[i]["id"] === currentId){
-      var alert = currentId+" is taken, please choose another.";
+      var alert = "'"+currentId+"'"+" is taken, please choose another ID.";
       // res.render("puppies", {alert: alert, puppies: puppies});
       return alert;
     }
@@ -59,6 +61,7 @@ function checkForDuplicate(currentId, currentName, arr, res){
       return false;
   };
 };
+
 
 
 module.exports = router;
