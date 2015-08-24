@@ -1,0 +1,21 @@
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+  <div class="container">
+
+    <h1>{{ title }}</h1>
+
+
+    <input type="button" onclick="move('/new')" class="btn btn-primary" method="get" value="Add A Puppy">
+    <input type="button" onclick="move('/new-person')" class="btn btn-primary" method="get" value="Add A Person">
+
+
+    <script type="text/javascript">
+    function move(page){window.location.href = page}</script>
+
+
+  </div>
+
+{% endblock %}

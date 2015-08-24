@@ -13,13 +13,11 @@ function confirmComplete(name, id){
 function checkForDuplicate(currentId, currentName, arr){
   for (var i = 0; i < arr.length; i++) {
     if (arr[i]["id"] === currentId && arr[i]["name"] === currentName){
-      var alert = "Your pup is already in the system.";
-      // res.render("puppies", {alert: alert, puppies: puppies});
+      var alert = currentName+" is already in the system.";
       return alert;
     }
     else if (arr[i]["id"] === currentId){
       var alert = "'"+currentId+"'"+" is taken, please choose another ID.";
-      // res.render("puppies", {alert: alert, puppies: puppies});
       return alert;
     }
     else
@@ -27,9 +25,6 @@ function checkForDuplicate(currentId, currentName, arr){
   };
 };
 
-function move(page){
-  window.location.href = page;
-};
 
 module.exports = {
   confirmComplete: confirmComplete,

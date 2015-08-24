@@ -11,13 +11,13 @@
     <p style="color: green">{{success}}</p>
     <table class="table table-striped">
       <tr>
-        <th>Puppy Name</th>
+        <th>Person Name</th>
         <th>ID</th>
       </tr>
-      {%for pup in puppies%}
+      {%for person in people%}
       <tr>
-        <td>{{pup.name}}</td>
-        <td>{{pup.id}}</td>
+        <td>{{person.name}}</td>
+        <td>{{person.id}}</td>
       </tr>
       {%endfor%}
     </table>
@@ -26,7 +26,7 @@
     <script type="text/javascript">
     function move(page){window.location.href = page}</script>
 
-    <input type="button" onclick="move('/new')" class="btn btn-primary" method="get" action="/new" value="Add Another Puppy">
+    <input type="button" onclick="move('/new-person')" class="btn btn-primary" value="Add Another Person">
 
   </div>
 
