@@ -21,6 +21,12 @@
       </tr>
       {%endfor%}
     </table>
+
+
+    <script type="text/javascript">
+    function move(page){window.location.href = page}</script>
+    <input type="button" onclick="move('/new')" class="btn btn-primary" method="get" action="/new" value="Add Another Puppy">
+
   </div>
 
 {% endblock %}

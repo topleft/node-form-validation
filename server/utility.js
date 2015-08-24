@@ -27,6 +27,10 @@ function checkForDuplicate(currentId, currentName, arr){
   };
 };
 
+function move(page){
+  window.location.href = page;
+};
+
 module.exports = {
   confirmComplete: confirmComplete,
   checkForDuplicate: checkForDuplicate
