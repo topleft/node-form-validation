@@ -10,7 +10,7 @@ function confirmComplete(name, id){
   }
 };
 
-function checkForDuplicate(currentId, currentName, arr, res){
+function checkForDuplicate(currentId, currentName, arr){
   for (var i = 0; i < arr.length; i++) {
     if (arr[i]["id"] === currentId && arr[i]["name"] === currentName){
       var alert = "Your pup is already in the system.";
